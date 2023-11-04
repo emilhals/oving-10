@@ -18,7 +18,6 @@ def lagre_data_til_liste():
     hentet_data = csv.reader(file, delimiter=' ', quotechar=';')
     
     for line in hentet_data:
-      #print(line)
       for i in line:
         split_line = i.split(';')
       
@@ -31,6 +30,3 @@ def lagre_data_til_liste():
   return dag_info_list
 
 
-  
-if __name__ == "__main__":  
-  print('')
