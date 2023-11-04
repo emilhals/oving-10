@@ -12,7 +12,7 @@ class DagInfo:
     self.middelvind = middelvind
 
 def lagre_data_til_liste():
-  dag_info_list = [0]
+  dag_info_list = []
   
   with open('snoedybder_vaer_en_stasjon_dogn.csv', newline='') as file:
     hentet_data = csv.reader(file, delimiter=' ', quotechar=';')
@@ -27,6 +27,12 @@ def lagre_data_til_liste():
             dag_info_list.append(dag)
           except:
             raise 
-  return dag_info_list
-
-
+            
+  year_list = []
+  for day in dag_info_list:
+      try:
+          year_list[int(day.dato.split(".")[2])-1980].append(day)
+      except:
+          year_list.append([])
+          year_list[int(day.dato.split(".")[2])-1980].append(day)
+  return year_list
